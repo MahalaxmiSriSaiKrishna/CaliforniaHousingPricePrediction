@@ -32,7 +32,7 @@ if(st.button('Predict')):
     feature_names = ["MedInc","HouseAge","AveRooms","AveBedrms","Population","AveOccup","Latitude","Longitude"]
     values = features[0]
     plt.figure(figsize=(8,4))
-    plt.barh(feature_names, values, color="skyblue")
+    plt.barh(input_data, prediction, color="skyblue")
     plt.xlabel("Feature Value")
     plt.title("Input Feature Values")
     st.pyplot(plt)
