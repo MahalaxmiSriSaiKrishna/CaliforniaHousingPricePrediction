@@ -4,7 +4,10 @@ import joblib as jb
 
 ##Loding Model
 model = jb.load('model.pkl')
-st.title('House Price Prediction')
+
+st.set_page_config(page_title="California Housing Price Prediction", layout="centered")
+st.title("🏠 California Housing Price Prediction")
+
 st.write('Enter the details of the house to predict the price')
 
 ##User Input
@@ -24,6 +27,15 @@ if(st.button('Predict')):
                   columns=['MedInc','HouseAge','AveRooms','AveBedrms','Population','AveOccup','Latitude','Longitude'])
     prediction = model.predict(input_data)
     st.success(f'The predicted price of the house is {prediction[0]:,.2f}')
+
+    st.subheader("Feature Influence Visualization")
+    feature_names = ["MedInc","HouseAge","AveRooms","AveBedrms","Population","AveOccup","Latitude","Longitude"]
+    values = features[0]
+    plt.figure(figsize=(8,4))
+    plt.barh(feature_names, values, color="skyblue")
+    plt.xlabel("Feature Value")
+    plt.title("Input Feature Values")
+    st.pyplot(plt)
 
 
 
