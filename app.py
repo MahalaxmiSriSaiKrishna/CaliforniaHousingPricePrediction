@@ -29,11 +29,13 @@ if(st.button('Predict')):
     prediction = model.predict(input_data)
     st.success(f'The predicted price of the house is {prediction[0]:,.2f}')
 
-    st.subheader("Feature Influence Visualization")
-    feature_names = ["MedInc","HouseAge","AveRooms","AveBedrms","Population","AveOccup","Latitude","Longitude"]
-    values = prediction[0]
+    st.subheader("Input Feature Values")
+
+    feature_names = input_data.columns.tolist()  # ['MedInc', 'HouseAge', ...]
+    feature_values = input_data.iloc[0].values  # numeric values
+
     plt.figure(figsize=(8,4))
-    plt.barh(input_data, values, color="skyblue")
+    plt.barh(feature_names, feature_values, color="skyblue") 
     plt.xlabel("Feature Value")
     plt.title("Input Feature Values")
     st.pyplot(plt)
