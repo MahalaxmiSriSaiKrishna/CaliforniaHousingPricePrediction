@@ -30,9 +30,9 @@ if(st.button('Predict')):
 
     st.subheader("Feature Influence Visualization")
     feature_names = ["MedInc","HouseAge","AveRooms","AveBedrms","Population","AveOccup","Latitude","Longitude"]
-    values = features[0]
+    values = prediction[0]
     plt.figure(figsize=(8,4))
-    plt.barh(input_data, prediction, color="skyblue")
+    plt.barh(input_data, values, color="skyblue")
     plt.xlabel("Feature Value")
     plt.title("Input Feature Values")
     st.pyplot(plt)
